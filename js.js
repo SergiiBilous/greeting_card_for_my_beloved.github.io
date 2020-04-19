@@ -32,18 +32,18 @@
 				mail.removeEventListener('mousedown', onClickByMail);
 				mail.removeEventListener('touchstart', onClickByMail);
 				
-				const textItems = document.querySelectorAll('.text_item')
-				const text_1 = document.getElementById("text_1")
+				const textItems = document.querySelectorAll('.text_item');
+				const text_1 = document.getElementById("text_1");
 				mail.classList.add('active_mail');
 				if(mail.classList.value === 'mail active_mail') return;
-				mail.classList.remove('mail_hover')
+				mail.classList.remove('mail_hover');
 				textItems.forEach((item, index)=>{
 				item.classList.add(`text_${index+1}`);
 				item.classList.remove('hidden');
 				setTimeout(()=>{
-					document.removeEventListener('mousemove', drawHeart)
-					document.removeEventListener('touchstart', drawHeart)
-					document.removeEventListener('touchmove', drawHeart)
+					document.removeEventListener('mousemove', drawHeart);
+					document.removeEventListener('touchstart', drawHeart);
+					document.removeEventListener('touchmove', drawHeart);
 					let i = 1;
 					const aLotOfHeart = setInterval(()=>{
 						
@@ -54,10 +54,10 @@
 						
 						const heart = createHeartElement(Math.random()*body.clientWidth, Math.random()*body.clientHeight, 20);
 						body.appendChild(heart);
-						i++
+						i++;
 						setTimeout(()=> {
 							heart.remove();
-						}, 3500)
+						}, 3500);
 					},10)
 					return;
 				}, 17000)
@@ -65,38 +65,47 @@
 			}catch(error){alert('Something went wrong'); console.error(error)}
 		}
 		
+
 		function afterMailAnimation(aLotOfHeart, mail, body){
-			mail.classList.add('mail_hidding')
+			mail.classList.add('mail_hidding');
 			setTimeout(()=>{
 				mail.remove();
-			}, 1000)
+			}, 1000);
 			clearInterval(aLotOfHeart);
-			const clouds = document.querySelector('.clouds')
-			clouds.classList.remove('hidden')
-			let iImg = 1
-			const imgWrapper = document.querySelector('div.img_wrapper')
+			const clouds = document.querySelector('.clouds');
+			clouds.classList.remove('hidden');
+			let iImg = 1;
+			const imgWrapper = document.querySelector('div.img_wrapper');
 			if(imgWrapper){
-				imgWrapper.classList.remove('hidden')
-				document.addEventListener('mousemove', drawHeart)
-				document.addEventListener('touchstart', drawHeart)
-				document.addEventListener('touchmove', drawHeart)
-				const collection = Array.from(imgWrapper.children)
+				
+				imgWrapper.classList.remove('hidden');
+				
+				document.addEventListener('mousemove', drawHeart);
+				document.addEventListener('touchstart', drawHeart);
+				document.addEventListener('touchmove', drawHeart);
+				
+				const collection = Array.from(imgWrapper.children);
 				for(let item of collection){
 					if(item.classList.value === 'img_card') return;
-					item.classList.add('img_card')
+					item.classList.add('img_card');
 				}
-				setTimeout(()=>{document.location.reload(true)}, 40000)
+				
+				setTimeout(()=>{document.location.reload(true)}, 40000);
 			}
 			else document.location.reload(true);
 		}
 
 		function createHeartElement(x, y, minSize = 0) {
+			
 			const heart = document.createElement('span');
+			const size = Math.random()*80 + minSize;
+			
 			heart.style.left = x + 'px';
 			heart.style.top = y + 'px';
-			const size = Math.random()*80 + minSize;
+			
 			heart.style.width = size + 'px';
 			heart.style.height = size + 'px';
-			heart.classList.add('heart_item')
+			heart.classList.add('heart_item');
+			
 			return heart;
 		}
