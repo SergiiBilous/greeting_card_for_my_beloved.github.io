@@ -1,0 +1,271 @@
+			body{
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+			}
+			.hidden{
+				visibility: hidden !important;
+				width: 0 !important;
+			}
+			.screen{
+				width: 100%;
+				height: 100vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				position: relative;
+				background: linear-gradient(to left, #dce35b, #45b649)
+			}
+			.text{
+				display: flex;
+				justify-content: center;
+			}
+			.text_item {
+			}
+			.text_1{
+				visibility: visible;
+				transform: scale(4);
+				opacity: 0;
+				animation-delay: 2s;
+				animation-name: text-anim;
+				animation-duration: 10s; 
+				animation-timing-function: linear;
+				z-index: 2;
+			}
+			.text_2{
+				visibility: visible;
+				transform: scale(4);
+				opacity: 0;
+				animation-name: text-anim;
+				animation-duration: 10s; 
+				animation-delay: 7s;
+				animation-timing-function: linear;
+				z-index: 2;
+			}
+			.mail{
+				position: fixed;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				width: 50vw;
+				cursor: pointer;
+			}
+			.mail_img{
+				width: 100%;
+				transition: transform 1s ease;
+				height: 400px;
+				z-index: 1;
+			}
+			.mail_hover{
+				animation: mail_shake 5s linear infinite;
+			}
+			.mail_hover:active .mail_img{
+				transition: transform 0.3s ease;
+				transform: scale(1) rotate(5deg);
+			}
+			.active_mail{
+				animation-name: mail-hide-anim;
+				animation-duration: 2s;
+				//animation-delay: 1s;				
+				animation-timing-function: linear;
+				transition: all 2s ease;
+				position: fixed;
+				z-index: 1;
+				left: 50%;
+				top: 100%;
+				height: max-content;
+				cursor: initial;
+			}
+			@keyframes mail_shake {
+				0% {
+					transform: translate(-50%, -50%) rotate(0deg);
+				}
+				5% {
+					transform: translate(-50%, -50%) rotate(5deg);
+				}
+				10% {
+					transform: translate(-50%, -50%) rotate(-5deg);
+				}
+				15% {
+					transform: translate(-50%, -50%) rotate(5deg);
+				}
+				20% {
+					transform: translate(-50%, -50%) rotate(0deg);
+				}
+				100% {
+					transform: translate(-50%, -50%) rotate(0deg);
+				}
+			}
+			@keyframes mail-hide-anim {
+				0% {
+					opacity: 0.5;
+				}
+				10% {
+					opacity: 0;
+				}
+				80% {
+					opacity: 0;
+					
+				}
+				100% {
+					opacity: 1;
+					
+				}
+			} 
+			@keyframes text-anim {
+				0%   {
+				opacity: 0;	
+				transform: scale(1) translate(0%, 30vh);
+			  }
+			  10%  {
+				opacity: 0.3;	
+				transform: scale(2) translate(-30%, 25vh);
+			  }
+			  20%  {
+				opacity: 0.6;	
+				transform: scale(2) translate(-60%, 18vh);
+			  }
+			  30%  {
+				opacity: 0.8;	
+				transform: scale(3) translate(60%, 7vh);
+			  }
+			  40%  {
+				opacity: 1;
+				transform: scale(4) translate(0%, 0vh);
+				color: red;
+			  }
+			  50%  {
+				opacity: 1;
+				transform: scale(4) translate(0%, 0vh);
+				color: red;
+			  }
+			  60%  {
+				opacity: 0.8;
+				transform: scale(4.5) translate(0%, 0vh);
+				color: red;
+			  }
+			  70%  {
+				opacity: 0.6;
+				transform: scale(5) translate(-35%, -3vh);
+			  }
+			  80%  {
+				  opacity: 0.4;
+				transform: scale(5) translate(-70%, -5vh);
+			  }
+			  90%  {
+				  opacity: 0.1;
+				transform: scale(3) translate(80%, -15vh);
+			  }
+			  100% {
+				  opacity: 0;
+				transform: scale(1) translate(-90%, -50vh);
+			  }
+			}
+			
+			.heart_item {
+				background-image: url(./heart.svg);
+				background-position: center;
+				background-size: contain;
+				position: absolute;
+				animation: fly_heart 4s linear infinite;
+				z-index: 0;
+			}
+			@keyframes fly_heart {
+				from {
+					transform: translate(0%, 0%);
+					opacity: 1;
+				}
+				to {
+					transform: translate(0%, -1000%);
+					opacity: 0;
+				}
+			}
+			
+			
+		.clouds {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: transparent;
+		}
+		.clouds img {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			max-width: 100%;
+			animation: fly_clouds calc(8s * var(--i)) linear infinite;
+			z-index: 100;
+		}
+		@keyframes fly_clouds {
+			0% {
+				transform: translateX(-100%)
+			}
+			100% {
+				transform: translateX(100%)
+			}
+		}
+		.img_wrapper {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: transparent;
+		}
+		.img_card {
+			position: absolute;
+			width: 50%;
+			height: 50%;
+			background-position: top;
+			background-size: cover;
+			left: 0;
+			top: 50%;
+			transform: translate(-120%, -50%);
+			animation: fly_img_card 8s linear;
+			animation-delay: var(--delay);
+			transition: opacity 1s ease;
+			opacity: 0;
+			border-radius: 10px;
+			box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+		}
+		@keyframes fly_img_card {
+			0% {
+				transform: translate(-100%, -50%) rotate(0deg);
+				opacity: 0;
+			}
+			20% {
+				transform: translate(0%, -50%) rotate(-6deg);
+				opacity: 1;
+			}
+			40% {
+				transform: translate(50%, -50%) rotate(4deg);
+				opacity: 1;
+			}
+			60% {
+				transform: translate(100%, -50%) rotate(-5deg);
+				opacity: 1;
+			}
+			80% {
+				transform: translate(150%, -50%) rotate(6deg);
+				opacity: 1;
+			}
+			100% {
+				transform: translate(200%, -50%) rotate(0deg);
+				opacity: 0;
+			}
+		}
+		.mail_hidding {
+			opacity: 0;
+			transition: opacity 1s ease;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
